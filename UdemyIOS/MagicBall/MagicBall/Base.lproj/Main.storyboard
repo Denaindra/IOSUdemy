@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bHe-49-r9V">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="hlm-G4-RZS">
+            <objects>
+                <viewController id="bHe-49-r9V" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tHF-MV-dSP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask me Anything" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMv-px-zbF">
+                                <rect key="frame" x="53" y="61" width="268" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKW-IV-q9H">
+                                <rect key="frame" x="160" y="506" width="62" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <state key="normal" title="Ask">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="AskBtnClick:" destination="bHe-49-r9V" eventType="touchUpInside" id="PG9-nJ-Jzg"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ball1" translatesAutoresizingMaskIntoConstraints="NO" id="kV7-3L-fuq">
+                                <rect key="frame" x="49" y="138" width="277" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="aTe-V0-G2x"/>
+                                    <constraint firstAttribute="width" constant="277" id="bKo-7x-84X"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15686274510000001" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kV7-3L-fuq" firstAttribute="top" secondItem="NMv-px-zbF" secondAttribute="bottom" constant="32" id="WVq-Av-Q0G"/>
+                            <constraint firstItem="NMv-px-zbF" firstAttribute="centerX" secondItem="tHF-MV-dSP" secondAttribute="centerX" id="edh-7V-zuk"/>
+                            <constraint firstItem="NMv-px-zbF" firstAttribute="top" secondItem="n61-rI-NV1" secondAttribute="top" constant="41" id="erL-cV-saR"/>
+                            <constraint firstItem="kV7-3L-fuq" firstAttribute="centerX" secondItem="tHF-MV-dSP" secondAttribute="centerX" id="g7M-RX-cZh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n61-rI-NV1"/>
+                    </view>
+                    <string key="customModule">dice1Img_image___UIImage_init_named__rollnumber_rollDice1___________dice1Img_image___UIImage_init_named__rollnumber_rollDice1___________dice1Img_image___UIImage_init_named__rollnumber_rollDice1___Magic_8_ball</string>
+                    <connections>
+                        <outlet property="magicBallImg" destination="kV7-3L-fuq" id="oCW-5G-Ngo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DqJ-Gp-f0P" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="119.1904047976012"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ball1" width="460" height="412"/>
+    </resources>
+</document>
