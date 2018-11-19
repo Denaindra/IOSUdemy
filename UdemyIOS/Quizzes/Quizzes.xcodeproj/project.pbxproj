@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ACA9029621A23F1500D6646E /* QuestionBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9029521A23F1500D6646E /* QuestionBank.swift */; };
 		ACF3A82421A1BF2E00676921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3A82321A1BF2E00676921 /* AppDelegate.swift */; };
 		ACF3A82621A1BF2E00676921 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF3A82521A1BF2E00676921 /* ViewController.swift */; };
 		ACF3A82921A1BF2E00676921 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF3A82721A1BF2E00676921 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ACA9029521A23F1500D6646E /* QuestionBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBank.swift; sourceTree = "<group>"; };
 		ACF3A82021A1BF2E00676921 /* Quizzes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quizzes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF3A82321A1BF2E00676921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF3A82521A1BF2E00676921 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				ACF3A83821A1CE1400676921 /* Questions.swift */,
+				ACA9029521A23F1500D6646E /* QuestionBank.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACF3A83921A1CE1400676921 /* Questions.swift in Sources */,
+				ACA9029621A23F1500D6646E /* QuestionBank.swift in Sources */,
 				ACF3A82621A1BF2E00676921 /* ViewController.swift in Sources */,
 				ACF3A82421A1BF2E00676921 /* AppDelegate.swift in Sources */,
 			);
