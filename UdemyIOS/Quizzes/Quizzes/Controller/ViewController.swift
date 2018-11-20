@@ -9,14 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     
     
     
     @IBOutlet weak var quizzTex: UILabel!
     @IBOutlet weak var progressText: UILabel!
     @IBOutlet weak var scoreText: UILabel!
-   // @IBOutlet weak var progressView: UIView!
+    // @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var progressWidth: NSLayoutConstraint!
     
     private let questionList = QuestionBank();
@@ -26,68 +26,60 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // UpdateUI()
+        UpdateUI()
         NextQuestion()
     }
-
+    
     @IBAction func AnswerClick(_ sender: UIButton) {
         if sender.tag == 1 {
             pickedAnswer = true
         }else if sender.tag == 0 {
             pickedAnswer = false
         }
-        CheckAnswer()
+        
         questionNumber += 1
+        CheckAnswer()
         NextQuestion();
-
+        
     }
     
     func UpdateUI() {
         scoreText.text = "Score:\(score)"
         progressText.text = "\(questionNumber + 1)/13"
-       progressWidth.constant = (view.frame.size.width / 13) * CGFloat(questionNumber + 1)
-       // progressView.backgroundColor = UIColor.green;
-        //progressView.frame.size.width 
+        progressWidth.constant = (view.frame.size.width / 13) * CGFloat(questionNumber + 1)
 
-        
     }
     
     func CheckAnswer() {
         let curretAnswer = questionList.list[questionNumber].answer
         if curretAnswer == pickedAnswer{
             score += 1
-            print("correct")
-
+            ProgressHUD.showSuccess("Correct")
         }
         else{
-            print("incorrect")
+            ProgressHUD.showError("in Correct")
         }
         UpdateUI()
-
     }
     
     func NextQuestion() {
-
+        
         if questionNumber <= 12 {
             quizzTex.text = questionList.list[questionNumber].questionText
         }
         else {
-            
             let alert = UIAlertController(title: "Awsome", message: "Tour completed all questions", preferredStyle:.alert)
             alert.addAction(UIAlertAction(title: "Restart", style:.default, handler: { action in
                 self.StartOver()
             }))
             present(alert,animated: true, completion: nil)
         }
-
     }
-    
     func StartOver()
     {
         questionNumber = 0;
         NextQuestion()
     }
-    
-    
+
 }
 
