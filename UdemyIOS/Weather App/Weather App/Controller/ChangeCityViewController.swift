@@ -1,5 +1,5 @@
 //
-//  ChnageCityViewController.swift
+//  ChangeCityViewController.swift
 //  Weather App
 //
 //  Created by gayan perera on 11/22/18.
@@ -8,13 +8,10 @@
 
 import UIKit
 
-class ChnageCityViewController: UIViewController {
+class ChangeCityViewController: UIViewController {
+
     
-    
-    @IBOutlet weak var chnageCityText: UITextField!
-    @IBOutlet weak var bakButton: UIButton!
-    @IBOutlet weak var getWeatherButton: UIButton!
-    
+    @IBOutlet weak var chnageCity: UITextField!
     
     
     
@@ -24,7 +21,11 @@ class ChnageCityViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func Backbtn(_ sender: Any) {
+    }
+    
+    @IBAction func GetWeatherDetails(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
