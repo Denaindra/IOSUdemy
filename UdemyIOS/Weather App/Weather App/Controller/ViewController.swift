@@ -81,12 +81,13 @@ class ViewController: UIViewController , CLLocationManagerDelegate,CheckCityDeli
     
     func UpdateWeatherInCurrentUI(){
         citylabel.text = weatherDataModel.city
-        tempretureLabel.text = String(weatherDataModel.tempreture!) + "°"
+        tempretureLabel.text = "\(weatherDataModel.tempreture!) °"
         weaherIcon.image = UIImage(named: weatherDataModel.weatherIconNam!)
     }
     
     func UserEnterNewCity(city: String) {
-        print(city)
+        let param : [String:String] = ["q":city,"appid":APP_ID]
+        GetWeatherData(parameters: param, url: WEATHER_URL)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
