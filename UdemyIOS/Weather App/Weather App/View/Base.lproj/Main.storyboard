@@ -29,7 +29,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="switch"/>
                                 <connections>
-                                    <segue destination="ZDk-iw-P8I" kind="presentation" id="7Qo-dW-hlg"/>
+                                    <segue destination="ZDk-iw-P8I" kind="presentation" identifier="UIViewControllerSegue" id="7Qo-dW-hlg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAJ-ob-WBD">

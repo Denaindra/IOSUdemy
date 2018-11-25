@@ -11,16 +11,16 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-class ViewController: UIViewController , CLLocationManagerDelegate{
+class ViewController: UIViewController , CLLocationManagerDelegate,CheckCityDeligate{
+    
     
     @IBOutlet weak var tempretureLabel: UILabel!
     @IBOutlet weak var weaherIcon: UIImageView!
     @IBOutlet weak var citylabel: UILabel!
-    
+   
     private let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
     private let APP_ID = "168ff49f28afa80f5828077dd70d11ec"
     private let locationManager = CLLocationManager()
-    
     private let weatherDataModel = WeatherDataModel();
     
     override func viewDidLoad() {
@@ -83,6 +83,19 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
         citylabel.text = weatherDataModel.city
         tempretureLabel.text = String(weatherDataModel.tempreture!) + "°"
         weaherIcon.image = UIImage(named: weatherDataModel.weatherIconNam!)
+    }
+    
+    func UserEnterNewCity(city: String) {
+        print(city)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "UIViewControllerSegue"
+        {
+           let destinationVC = segue.destination as! ChangeCityViewController
+            destinationVC.delegate = self;
+        }
     }
 }
 
