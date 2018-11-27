@@ -13,7 +13,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="ViewController" customModule="FireChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="WelComeViewController" customModule="FireChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +72,7 @@
         <!--Register-->
         <scene sceneID="54X-ad-u0e">
             <objects>
-                <viewController id="WP1-x8-6v0" sceneMemberID="viewController">
+                <viewController id="WP1-x8-6v0" customClass="RegisterViewController" customModule="FireChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mzb-bU-o2i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +80,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="H7f-pv-j3I">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTj-bz-7Vm">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTj-bz-7Vm">
                                 <rect key="frame" x="16" y="213.5" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="8Y2-3T-tla"/>
@@ -89,7 +89,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w56-LB-h3H">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w56-LB-h3H">
                                 <rect key="frame" x="16" y="262.5" width="343" height="40"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -103,7 +103,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OWT-Cy-SHt" kind="show" id="exO-j2-fyM"/>
+                                    <action selector="RegisterClick:" destination="WP1-x8-6v0" eventType="touchUpInside" id="1Rw-WV-poi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -129,6 +129,10 @@
                         <viewLayoutGuide key="safeArea" id="MOn-ay-Vkf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="iJc-yY-WEk"/>
+                    <connections>
+                        <outlet property="passwordField" destination="w56-LB-h3H" id="ab9-yG-KUb"/>
+                        <outlet property="userNameField" destination="ZTj-bz-7Vm" id="Gv0-ys-gWt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lps-rl-95Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +141,7 @@
         <!--Login-->
         <scene sceneID="4HB-gg-XHw">
             <objects>
-                <viewController id="OWT-Cy-SHt" sceneMemberID="viewController">
+                <viewController id="OWT-Cy-SHt" customClass="LoginViewController" customModule="FireChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QFF-xH-7Bw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,7 +149,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="kcU-TK-5qv">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rLR-Gy-pAK">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rLR-Gy-pAK">
                                 <rect key="frame" x="16" y="193.5" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Nnc-3O-XNe"/>
@@ -154,7 +158,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pass word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AmA-pd-DhO">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AmA-pd-DhO">
                                 <rect key="frame" x="16" y="242.5" width="343" height="40"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -168,6 +172,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="LoginClick:" destination="OWT-Cy-SHt" eventType="touchUpInside" id="yXk-fW-UnI"/>
                                     <segue destination="JOV-CD-5av" kind="show" id="cRh-Lh-b0Y"/>
                                 </connections>
                             </button>
@@ -193,6 +198,10 @@
                         <viewLayoutGuide key="safeArea" id="Sdt-l7-O49"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="36A-cW-lEl"/>
+                    <connections>
+                        <outlet property="passWrdFeild" destination="AmA-pd-DhO" id="fqC-Z9-PrM"/>
+                        <outlet property="userNameField" destination="rLR-Gy-pAK" id="b9a-Dg-oCm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISn-PU-sfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -201,7 +210,7 @@
         <!--Flash Chat-->
         <scene sceneID="Utz-ZO-aKI">
             <objects>
-                <viewController id="JOV-CD-5av" sceneMemberID="viewController">
+                <viewController id="JOV-CD-5av" customClass="ChatViewController" customModule="FireChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gtv-nn-59C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,7 +258,4 @@
         <image name="background" width="1280" height="949"/>
         <image name="background1" width="1800" height="1192.5"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="C74-UQ-Xg7"/>
-    </inferredMetricsTieBreakers>
 </document>

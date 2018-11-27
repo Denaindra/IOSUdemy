@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0B510E136773284DC258645E /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7EA86B8071FF70D5FC64B9 /* Pods_FireChat.framework */; };
+		AC67B9EB21ACDE09005074A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67B9EA21ACDE09005074A2 /* LoginViewController.swift */; };
+		AC67B9ED21ACDE1C005074A2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67B9EC21ACDE1C005074A2 /* RegisterViewController.swift */; };
+		AC67B9EF21ACDE6E005074A2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67B9EE21ACDE6E005074A2 /* ChatViewController.swift */; };
 		ACA24AC121AB7F4100898BE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA24AC021AB7F4100898BE1 /* AppDelegate.swift */; };
-		ACA24AC321AB7F4100898BE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA24AC221AB7F4100898BE1 /* ViewController.swift */; };
+		ACA24AC321AB7F4100898BE1 /* WelComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA24AC221AB7F4100898BE1 /* WelComeViewController.swift */; };
 		ACA24AC621AB7F4100898BE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA24AC421AB7F4100898BE1 /* Main.storyboard */; };
 		ACA24AC821AB7F4200898BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA24AC721AB7F4200898BE1 /* Assets.xcassets */; };
 		ACA24ACB21AB7F4200898BE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA24AC921AB7F4200898BE1 /* LaunchScreen.storyboard */; };
@@ -20,9 +23,12 @@
 		2D8EE6598B4A0C67F110367A /* Pods-FireChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FireChat/Pods-FireChat.debug.xcconfig"; sourceTree = "<group>"; };
 		5A7EA86B8071FF70D5FC64B9 /* Pods_FireChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D230A6804CC4AB1776C0E9 /* Pods-FireChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-FireChat/Pods-FireChat.release.xcconfig"; sourceTree = "<group>"; };
+		AC67B9EA21ACDE09005074A2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = FireChat/ViewController/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		AC67B9EC21ACDE1C005074A2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = FireChat/ViewController/RegisterViewController.swift; sourceTree = SOURCE_ROOT; };
+		AC67B9EE21ACDE6E005074A2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = FireChat/ViewController/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
 		ACA24ABD21AB7F4100898BE1 /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA24AC021AB7F4100898BE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ACA24AC221AB7F4100898BE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ACA24AC221AB7F4100898BE1 /* WelComeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelComeViewController.swift; sourceTree = "<group>"; };
 		ACA24AC521AB7F4100898BE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACA24AC721AB7F4200898BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACA24ACA21AB7F4200898BE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,7 +115,10 @@
 		ACA24AD521AB81A900898BE1 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ACA24AC221AB7F4100898BE1 /* ViewController.swift */,
+				ACA24AC221AB7F4100898BE1 /* WelComeViewController.swift */,
+				AC67B9EA21ACDE09005074A2 /* LoginViewController.swift */,
+				AC67B9EC21ACDE1C005074A2 /* RegisterViewController.swift */,
+				AC67B9EE21ACDE6E005074A2 /* ChatViewController.swift */,
 				ACA24AC021AB7F4100898BE1 /* AppDelegate.swift */,
 			);
 			path = ViewController;
@@ -250,8 +259,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACA24AC321AB7F4100898BE1 /* ViewController.swift in Sources */,
+				AC67B9EB21ACDE09005074A2 /* LoginViewController.swift in Sources */,
+				ACA24AC321AB7F4100898BE1 /* WelComeViewController.swift in Sources */,
 				ACA24AC121AB7F4100898BE1 /* AppDelegate.swift in Sources */,
+				AC67B9EF21ACDE6E005074A2 /* ChatViewController.swift in Sources */,
+				AC67B9ED21ACDE1C005074A2 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
