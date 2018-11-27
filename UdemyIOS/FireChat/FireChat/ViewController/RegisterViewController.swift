@@ -33,6 +33,7 @@ class RegisterViewController: UIViewController {
             }
             else {
                 print("Sucess full login")
+                self.performSegue(withIdentifier: "goToLogin", sender: self)
             }
         }
     }

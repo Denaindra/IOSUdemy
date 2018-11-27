@@ -93,7 +93,7 @@
                                 <rect key="frame" x="16" y="262.5" width="343" height="40"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DK-vD-Nu1">
                                 <rect key="frame" x="16" y="327" width="343" height="40"/>
@@ -132,6 +132,7 @@
                     <connections>
                         <outlet property="passwordField" destination="w56-LB-h3H" id="ab9-yG-KUb"/>
                         <outlet property="userNameField" destination="ZTj-bz-7Vm" id="Gv0-ys-gWt"/>
+                        <segue destination="OWT-Cy-SHt" kind="show" identifier="goToLogin" id="Bf3-3z-MzC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lps-rl-95Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,7 +163,7 @@
                                 <rect key="frame" x="16" y="242.5" width="343" height="40"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDo-DE-cm5">
                                 <rect key="frame" x="16" y="307" width="343" height="40"/>
@@ -173,7 +174,6 @@
                                 </state>
                                 <connections>
                                     <action selector="LoginClick:" destination="OWT-Cy-SHt" eventType="touchUpInside" id="yXk-fW-UnI"/>
-                                    <segue destination="JOV-CD-5av" kind="show" id="cRh-Lh-b0Y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -201,6 +201,7 @@
                     <connections>
                         <outlet property="passWrdFeild" destination="AmA-pd-DhO" id="fqC-Z9-PrM"/>
                         <outlet property="userNameField" destination="rLR-Gy-pAK" id="b9a-Dg-oCm"/>
+                        <segue destination="JOV-CD-5av" kind="show" id="Gar-CC-O0K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISn-PU-sfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -258,4 +259,7 @@
         <image name="background" width="1280" height="949"/>
         <image name="background1" width="1800" height="1192.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bf3-3z-MzC"/>
+    </inferredMetricsTieBreakers>
 </document>
