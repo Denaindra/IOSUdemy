@@ -7,24 +7,43 @@
 //
 
 import UIKit
+import Firebase
 
-class ChatViewController: UIViewController {
+
+class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
+    @IBOutlet weak var chatTableView: UITableView!
+    private let animals: [String] = ["Horse", "Cow", "Camel", "Sheep", "Goat"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       let textFeildCell = UINib(nibName: "ChatTableViewCell", bundle: nil)
+        self.chatTableView.register(textFeildCell, forCellReuseIdentifier: "CustomViewCell")
+
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func UserLoguot(_ sender: UIBarButtonItem) {
+        do{
+            try Auth.auth().signOut()
+            navigationController?.popToRootViewController(animated: true)
+        }
+        catch{
+            print("erro")
+        }
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return animals.count;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell:ChatTableViewCell = chatTableView.dequeueReusableCell(withIdentifier: "CustomViewCell") as! ChatTableViewCell
+        cell.senderName.text = animals[indexPath.row]
+        return cell
+    }
+    
+    
 }

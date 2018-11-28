@@ -11,6 +11,8 @@
 		AC67B9EB21ACDE09005074A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67B9EA21ACDE09005074A2 /* LoginViewController.swift */; };
 		AC67B9ED21ACDE1C005074A2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67B9EC21ACDE1C005074A2 /* RegisterViewController.swift */; };
 		AC67B9EF21ACDE6E005074A2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67B9EE21ACDE6E005074A2 /* ChatViewController.swift */; };
+		AC6DE6C121AE2C3900DB0461 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DE6BF21AE2C3900DB0461 /* ChatTableViewCell.swift */; };
+		AC6DE6C221AE2C3900DB0461 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6DE6C021AE2C3900DB0461 /* ChatTableViewCell.xib */; };
 		ACA24AC121AB7F4100898BE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA24AC021AB7F4100898BE1 /* AppDelegate.swift */; };
 		ACA24AC321AB7F4100898BE1 /* WelComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA24AC221AB7F4100898BE1 /* WelComeViewController.swift */; };
 		ACA24AC621AB7F4100898BE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA24AC421AB7F4100898BE1 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 		AC67B9EA21ACDE09005074A2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = FireChat/ViewController/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		AC67B9EC21ACDE1C005074A2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = FireChat/ViewController/RegisterViewController.swift; sourceTree = SOURCE_ROOT; };
 		AC67B9EE21ACDE6E005074A2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = FireChat/ViewController/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
+		AC6DE6BF21AE2C3900DB0461 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		AC6DE6C021AE2C3900DB0461 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		ACA24ABD21AB7F4100898BE1 /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA24AC021AB7F4100898BE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACA24AC221AB7F4100898BE1 /* WelComeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelComeViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +69,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AC6DE6BE21AE2C0200DB0461 /* CutomView */ = {
+			isa = PBXGroup;
+			children = (
+				AC6DE6BF21AE2C3900DB0461 /* ChatTableViewCell.swift */,
+				AC6DE6C021AE2C3900DB0461 /* ChatTableViewCell.xib */,
+			);
+			path = CutomView;
+			sourceTree = "<group>";
+		};
 		ACA24AB421AB7F4000898BE1 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +111,7 @@
 		ACA24AD321AB819800898BE1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AC6DE6BE21AE2C0200DB0461 /* CutomView */,
 				ACA24AC421AB7F4100898BE1 /* Main.storyboard */,
 				ACA24AC721AB7F4200898BE1 /* Assets.xcassets */,
 				ACA24AC921AB7F4200898BE1 /* LaunchScreen.storyboard */,
@@ -186,6 +200,7 @@
 			files = (
 				ACA24ACB21AB7F4200898BE1 /* LaunchScreen.storyboard in Resources */,
 				ACA24AD721AB82C400898BE1 /* GoogleService-Info.plist in Resources */,
+				AC6DE6C221AE2C3900DB0461 /* ChatTableViewCell.xib in Resources */,
 				ACA24AC821AB7F4200898BE1 /* Assets.xcassets in Resources */,
 				ACA24AC621AB7F4100898BE1 /* Main.storyboard in Resources */,
 			);
@@ -262,6 +277,7 @@
 				AC67B9EB21ACDE09005074A2 /* LoginViewController.swift in Sources */,
 				ACA24AC321AB7F4100898BE1 /* WelComeViewController.swift in Sources */,
 				ACA24AC121AB7F4100898BE1 /* AppDelegate.swift in Sources */,
+				AC6DE6C121AE2C3900DB0461 /* ChatTableViewCell.swift in Sources */,
 				AC67B9EF21ACDE6E005074A2 /* ChatViewController.swift in Sources */,
 				AC67B9ED21ACDE1C005074A2 /* RegisterViewController.swift in Sources */,
 			);

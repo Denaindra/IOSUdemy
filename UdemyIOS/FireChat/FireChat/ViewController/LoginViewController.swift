@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var userNameField: UITextField!
@@ -20,6 +21,16 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func LoginClick(_ sender: Any) {
+        
+        Auth.auth().signIn(withEmail: userNameField.text!, password: passWrdFeild.text!) { (loginResponse, erro) in
+            if erro != nil {
+                print (erro!)
+            }
+            else {
+                print ("login sucssess full")
+                self.performSegue(withIdentifier: "logingToChat", sender: self)
+            }
+        }
     }
     
 

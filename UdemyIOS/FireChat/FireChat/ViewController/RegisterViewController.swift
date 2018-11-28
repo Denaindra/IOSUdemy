@@ -25,15 +25,14 @@ class RegisterViewController: UIViewController {
     
     @IBAction func RegisterClick(_ sender: Any) {
         
-   
+        
         Auth.auth().createUser(withEmail: userNameField.text!, password:passwordField.text!) { (authResult,erro) in
 
             if erro != nil {
-                print ("faild")
+               // print (erro)
             }
             else {
-                print("Sucess full login")
-                self.performSegue(withIdentifier: "goToLogin", sender: self)
+                self.performSegue(withIdentifier: "registerTofireChat", sender: self)
             }
         }
     }
