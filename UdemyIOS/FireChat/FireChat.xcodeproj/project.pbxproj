@@ -13,6 +13,7 @@
 		AC67B9EF21ACDE6E005074A2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67B9EE21ACDE6E005074A2 /* ChatViewController.swift */; };
 		AC6DE6C121AE2C3900DB0461 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DE6BF21AE2C3900DB0461 /* ChatTableViewCell.swift */; };
 		AC6DE6C221AE2C3900DB0461 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6DE6C021AE2C3900DB0461 /* ChatTableViewCell.xib */; };
+		AC8CCD4821B8B2AC001B3F48 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CCD4721B8B2AC001B3F48 /* Message.swift */; };
 		ACA24AC121AB7F4100898BE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA24AC021AB7F4100898BE1 /* AppDelegate.swift */; };
 		ACA24AC321AB7F4100898BE1 /* WelComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA24AC221AB7F4100898BE1 /* WelComeViewController.swift */; };
 		ACA24AC621AB7F4100898BE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA24AC421AB7F4100898BE1 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		AC67B9EE21ACDE6E005074A2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = FireChat/ViewController/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
 		AC6DE6BF21AE2C3900DB0461 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		AC6DE6C021AE2C3900DB0461 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
+		AC8CCD4721B8B2AC001B3F48 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		ACA24ABD21AB7F4100898BE1 /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA24AC021AB7F4100898BE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACA24AC221AB7F4100898BE1 /* WelComeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelComeViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		ACA24AD421AB81A200898BE1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AC8CCD4721B8B2AC001B3F48 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				AC6DE6C121AE2C3900DB0461 /* ChatTableViewCell.swift in Sources */,
 				AC67B9EF21ACDE6E005074A2 /* ChatViewController.swift in Sources */,
 				AC67B9ED21ACDE1C005074A2 /* RegisterViewController.swift in Sources */,
+				AC8CCD4821B8B2AC001B3F48 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
