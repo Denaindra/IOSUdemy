@@ -11,6 +11,6 @@ import Foundation
 
 class Message {
     
-    private var sender : String?
-    private var messageBody : String?
+    public var sender : String?
+    public var messageBody : String?
 }

@@ -65,6 +65,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="profileImage" destination="x3A-py-VMr" id="qQN-Ls-Bg2"/>
                 <outlet property="senderMessage" destination="LEQ-5r-YAM" id="u5F-gg-KT8"/>
                 <outlet property="senderName" destination="mHg-eC-8Rp" id="Ugy-m6-Tf2"/>
             </connections>

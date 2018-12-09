@@ -6,11 +6,11 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     @IBOutlet weak var chatViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatTableView: UITableView!
-    private let animals: [String] = ["Horse", "Swift.", "Camel", "Sheep", "Goat"]
+    private var messages:[Message] = [Message]()
     @IBOutlet weak var chatBtn: UIButton!
     @IBOutlet weak var chatTextFeild: UITextField!
     
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self,selector: #selector(keyboardWillShow),name: UIResponder.keyboardWillShowNotification,object:nil)
@@ -44,7 +44,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         let messageDB = Database.database().reference().child("FireChatMessages")
         let messageDictionary = ["Sender":Auth.auth().currentUser?.email,"MessageBody":chatTextFeild.text!]
-   
+        
         messageDB.childByAutoId().setValue(messageDictionary){
             (error,reference) in
             
@@ -58,12 +58,22 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animals.count;
+        return messages.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ChatTableViewCell = chatTableView.dequeueReusableCell(withIdentifier: "CustomViewCell") as! ChatTableViewCell
-        cell.senderMessage.text = animals[indexPath.row]
+        cell.senderName.text = messages[indexPath.row].sender
+        cell.senderMessage.text = messages[indexPath.row].messageBody
+        cell.profileImage.image = UIImage(named: "egg")
+        
+        if messages[indexPath.row].sender == Auth.auth().currentUser?.email as String? {
+            SetbackgroudColorForCurrentUser(auth: true,image:cell.profileImage)
+        }
+        else {
+            SetbackgroudColorForCurrentUser(auth: false,image:cell.profileImage)
+        }
+        
         return cell
     }
     
@@ -78,10 +88,11 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let messageDB = Database.database().reference().child("FireChatMessages")
         messageDB.observe(.childAdded, with: { (snapshot) in
             let snapshoutvalue = snapshot.value as! Dictionary<String,String>
-            let text = snapshoutvalue["MessageBody"]!
-            let sender = snapshoutvalue["Sender"]!
-            
-            print(text,sender)
+            let message = Message()
+            message.messageBody = snapshoutvalue["MessageBody"]!
+            message.sender = snapshoutvalue["Sender"]!
+            self.messages.append(message)
+            self.chatTableView.reloadData()
         })
     }
     
@@ -96,6 +107,15 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         {
             self.chatViewBottomConstraint.constant = keyboardFrame.cgRectValue.height;
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    func SetbackgroudColorForCurrentUser(auth:Bool,image:UIImageView)
+    {
+        if auth {
+            image.backgroundColor = UIColor.green
+        } else {
+            image.backgroundColor = UIColor.red
         }
     }
 }
