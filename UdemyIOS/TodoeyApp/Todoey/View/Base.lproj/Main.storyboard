@@ -46,7 +46,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Todoey" id="4gj-PC-bmL"/>
+                    <navigationItem key="navigationItem" title="Todoey" id="4gj-PC-bmL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PZQ-cj-amv">
+                            <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="AddnewItem:" destination="BYZ-38-t0r" id="AdN-eo-2vn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="todoList" destination="XZL-FW-gsV" id="mcV-za-xnh"/>
                     </connections>
