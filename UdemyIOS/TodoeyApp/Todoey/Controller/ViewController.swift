@@ -14,7 +14,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var todoList: UITableView!
     
     //private properties
-    private var todoeyItems : [String] = ["Apple","mango","grapes","pinaapple",]
+    private var todoeyItems:[Items] = [Items]()
     private let userDefaults = UserDefaults.standard
     //public properties
     
@@ -24,12 +24,26 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.viewDidLoad()
         self.todoList.register(UINib(nibName: "TodoTableViewCell", bundle: nil), forCellReuseIdentifier: "TodoTableViewCell")
         
-        if  let list =  userDefaults.array(forKey: "todoeyItems") as? [String] {
+        let item1 = Items()
+        item1.item = "Apple"
+        todoeyItems.append(item1)
+        
+        let item2 = Items()
+        item2.item = "Mango"
+        todoeyItems.append(item2)
+
+        let item3 = Items()
+        item3.item = "Orange"
+        todoeyItems.append(item3)
+
+        let item4 = Items()
+        item4.item = "pinapple"
+        todoeyItems.append(item4)
+
+        if  let list =  userDefaults.array(forKey: "todoeyItems") as? [Items] {
             todoeyItems = list
         }
-            
         
-
     }
     
     //outlet methosds
@@ -38,7 +52,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let alert = UIAlertController(title: "Add New Item", message: " ", preferredStyle: UIAlertController.Style.alert)
         let action = UIAlertAction(title: "Add", style: .default) { (alertAction) in
             
-            self.todoeyItems.append(newItem.text!)
+            let item = Items()
+            item.item = newItem.text!
+            self.todoeyItems.append(item)
             self.userDefaults.set(self.todoeyItems, forKey: "todoeyItems")
             self.todoList.reloadData()
             
@@ -60,18 +76,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:TodoTableViewCell = todoList.dequeueReusableCell(withIdentifier: "TodoTableViewCell") as! TodoTableViewCell
-        cell.textLabel?.text = todoeyItems[indexPath.row]
+        cell.textLabel?.text = todoeyItems[indexPath.row].item
+        cell.accessoryType = todoeyItems[indexPath.row].done ? .checkmark :.none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        todoeyItems[indexPath.row].done = !todoeyItems[indexPath.row].done
         tableView.deselectRow(at: indexPath, animated: true)
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        }else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        }
+        tableView.reloadData()
     }
     
     
