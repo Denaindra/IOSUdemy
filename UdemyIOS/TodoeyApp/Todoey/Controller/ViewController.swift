@@ -87,8 +87,5 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }
-    
-    
-    
 }
 
