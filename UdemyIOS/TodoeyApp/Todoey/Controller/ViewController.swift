@@ -25,27 +25,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         self.todoList.register(UINib(nibName: "TodoTableViewCell", bundle: nil), forCellReuseIdentifier: "TodoTableViewCell")
-        
-        //        let item1 = Items()
-        //        item1.item = "Apple"
-        //        todoeyItems.append(item1)
-        //
-        //        let item2 = Items()
-        //        item2.item = "Mango"
-        //        todoeyItems.append(item2)
-        //
-        //        let item3 = Items()
-        //        item3.item = "Orange"
-        //        todoeyItems.append(item3)
-        //
-        //        let item4 = Items()
-        //        item4.item = "pinapple"
-        //        todoeyItems.append(item4)
-        
-        // if  let list =  userDefaults.array(forKey: "todoeyItems") as? [Items] {
-        //    todoeyItems = list
-        //}
-        
+        LoadData()
     }
     
     //outlet methosds
@@ -92,6 +72,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             print("save current datamodel to \(error)")
         }
         self.todoList.reloadData()
+    }
+    
+    func LoadData() {
+        let request : NSFetchRequest<Items> = Items.fetchRequest()
+        do{
+            todoeyItems = try context.fetch(request)
+        } catch{
+            print("fectuting error \(error)")
+        }
     }
 }
 
