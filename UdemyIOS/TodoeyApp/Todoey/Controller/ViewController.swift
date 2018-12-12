@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     //outlets
@@ -16,6 +16,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //private properties
     private var todoeyItems:[Items] = [Items]()
     private let userDefaults = UserDefaults.standard
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     //public properties
     
     
@@ -24,25 +26,25 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.viewDidLoad()
         self.todoList.register(UINib(nibName: "TodoTableViewCell", bundle: nil), forCellReuseIdentifier: "TodoTableViewCell")
         
-        let item1 = Items()
-        item1.item = "Apple"
-        todoeyItems.append(item1)
+        //        let item1 = Items()
+        //        item1.item = "Apple"
+        //        todoeyItems.append(item1)
+        //
+        //        let item2 = Items()
+        //        item2.item = "Mango"
+        //        todoeyItems.append(item2)
+        //
+        //        let item3 = Items()
+        //        item3.item = "Orange"
+        //        todoeyItems.append(item3)
+        //
+        //        let item4 = Items()
+        //        item4.item = "pinapple"
+        //        todoeyItems.append(item4)
         
-        let item2 = Items()
-        item2.item = "Mango"
-        todoeyItems.append(item2)
-
-        let item3 = Items()
-        item3.item = "Orange"
-        todoeyItems.append(item3)
-
-        let item4 = Items()
-        item4.item = "pinapple"
-        todoeyItems.append(item4)
-
-        if  let list =  userDefaults.array(forKey: "todoeyItems") as? [Items] {
-            todoeyItems = list
-        }
+        // if  let list =  userDefaults.array(forKey: "todoeyItems") as? [Items] {
+        //    todoeyItems = list
+        //}
         
     }
     
@@ -51,15 +53,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         var newItem = UITextField()
         let alert = UIAlertController(title: "Add New Item", message: " ", preferredStyle: UIAlertController.Style.alert)
         let action = UIAlertAction(title: "Add", style: .default) { (alertAction) in
-            
-            let item = Items()
+            let item = Items(context: self.context)
             item.item = newItem.text!
+            item.done = false
             self.todoeyItems.append(item)
-            self.userDefaults.set(self.todoeyItems, forKey: "todoeyItems")
-            self.todoList.reloadData()
-            
+            self.SaveItems()
         }
-        
         alert.addTextField { (textField) in
             textField.placeholder = "Enter Item name"
             newItem = textField
@@ -67,7 +66,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         alert.addAction(action)
         present(alert,animated:true,completion:nil)
     }
-    
     
     //bublic and private methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,6 +84,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         todoeyItems[indexPath.row].done = !todoeyItems[indexPath.row].done
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
+    }
+    func SaveItems() {
+        do {
+            try context.save();
+        }catch{
+            print("save current datamodel to \(error)")
+        }
+        self.todoList.reloadData()
     }
 }
 
