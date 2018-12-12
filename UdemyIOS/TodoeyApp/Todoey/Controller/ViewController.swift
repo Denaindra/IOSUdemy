@@ -61,10 +61,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+//        context.delete(todoeyItems[indexPath.row])
+//        todoeyItems.remove(at: indexPath.row)
+        
         todoeyItems[indexPath.row].done = !todoeyItems[indexPath.row].done
-        tableView.deselectRow(at: indexPath, animated: true)
         SaveItems()
-        tableView.reloadData()
+        tableView.deselectRow(at: indexPath, animated: true)
+
     }
     func SaveItems() {
         do {
