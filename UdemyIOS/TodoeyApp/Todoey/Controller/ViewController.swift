@@ -63,6 +63,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         todoeyItems[indexPath.row].done = !todoeyItems[indexPath.row].done
         tableView.deselectRow(at: indexPath, animated: true)
+        SaveItems()
         tableView.reloadData()
     }
     func SaveItems() {
