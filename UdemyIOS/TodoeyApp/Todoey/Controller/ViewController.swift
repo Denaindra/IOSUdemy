@@ -46,8 +46,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         alert.addAction(action)
         present(alert,animated:true,completion:nil)
     }
-    
-    //bublic and private methods
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoeyItems.count
     }
@@ -63,11 +62,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
 //        context.delete(todoeyItems[indexPath.row])
 //        todoeyItems.remove(at: indexPath.row)
-        
         todoeyItems[indexPath.row].done = !todoeyItems[indexPath.row].done
         SaveItems()
         tableView.deselectRow(at: indexPath, animated: true)
-
     }
     func SaveItems() {
         do {
@@ -78,13 +75,26 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.todoList.reloadData()
     }
     
-    func LoadData() {
-        let request : NSFetchRequest<Items> = Items.fetchRequest()
+    func LoadData(find request:NSFetchRequest<Items> = Items.fetchRequest()) {
+     
         do{
             todoeyItems = try context.fetch(request)
         } catch{
             print("fectuting error \(error)")
         }
     }
+    
+  
 }
 
+extension ViewController:UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<Items> = Items.fetchRequest()
+        request.predicate = NSPredicate(format: "item CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "item", ascending: true)]
+        print(searchBar.text!)
+        LoadData(find:request)
+        self.todoList.reloadData()
+    }
+}
