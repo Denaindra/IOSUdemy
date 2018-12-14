@@ -19,13 +19,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //public properties
+    var selectedCategory : Category? {
+        didSet{
+            LoadData()
+        }
+    }
+
     
     
     //overrrde methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.todoList.register(UINib(nibName: "TodoTableViewCell", bundle: nil), forCellReuseIdentifier: "TodoTableViewCell")
-        LoadData()
+        //LoadData()
     }
     
     //outlet methosds
