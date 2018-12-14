@@ -83,8 +83,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             print("fectuting error \(error)")
         }
     }
-    
-  
 }
 
 extension ViewController:UISearchBarDelegate {
@@ -96,5 +94,14 @@ extension ViewController:UISearchBarDelegate {
         print(searchBar.text!)
         LoadData(find:request)
         self.todoList.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            LoadData()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }

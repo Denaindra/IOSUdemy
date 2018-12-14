@@ -16,6 +16,7 @@
 		AC26F79C21BD66F100238CC5 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC26F79A21BD66F100238CC5 /* TodoTableViewCell.swift */; };
 		AC26F79D21BD66F100238CC5 /* TodoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC26F79B21BD66F100238CC5 /* TodoTableViewCell.xib */; };
 		AC40B51521C0E22E0030C273 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC40B51321C0E22E0030C273 /* DataModel.xcdatamodeld */; };
+		AC745E1521C3F8F90019471C /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC745E1421C3F8F90019471C /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AC26F79A21BD66F100238CC5 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		AC26F79B21BD66F100238CC5 /* TodoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoTableViewCell.xib; sourceTree = "<group>"; };
 		AC40B51421C0E22E0030C273 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		AC745E1421C3F8F90019471C /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				AC26F79921BD667200238CC5 /* SubControllers */,
 				AC26F78621BD647F00238CC5 /* ViewController.swift */,
+				AC745E1421C3F8F90019471C /* CategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC745E1521C3F8F90019471C /* CategoryViewController.swift in Sources */,
 				AC40B51521C0E22E0030C273 /* DataModel.xcdatamodeld in Sources */,
 				AC26F79C21BD66F100238CC5 /* TodoTableViewCell.swift in Sources */,
 				AC26F78721BD647F00238CC5 /* ViewController.swift in Sources */,
