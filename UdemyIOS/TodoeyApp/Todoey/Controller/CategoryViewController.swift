@@ -11,7 +11,7 @@ import CoreData
 class CategoryViewController: UITableViewController {
     
     // peivate varibales
-    private var categoryItems:[Category]()
+    private var categoryItems = [Category]()
     private let userDefaults = UserDefaults.standard
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -31,6 +31,15 @@ class CategoryViewController: UITableViewController {
         return cell;
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "GoToTodoeyPage", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ViewController
+        if let indexPath = tableView.indexPathForSelectedRow{
+            destinationVC.selectedCategory = categoryItems[indexPath.row]
+        }
+    }
     @IBAction func AddButton(_ sender: Any) {
         var newItem = UITextField()
         let alert = UIAlertController(title: "Add New Item", message: " ", preferredStyle: UIAlertController.Style.alert)
