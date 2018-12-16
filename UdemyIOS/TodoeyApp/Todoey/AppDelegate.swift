@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import RealmSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        let data = Data()
+//        data.age = 12
+//        data.name = "Gayan"
+//        do{
+//            let realm = try Realm()
+//            try realm.write {
+//                realm.add(data)
+//            }
+//        }catch{
+//            print("throw a exception \(error)")
+//        }
         return true
     }
 
