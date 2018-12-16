@@ -15,12 +15,11 @@ class CategoryViewController: UITableViewController {
     // peivate varibales
     private var categoryItems:Results<Category>?
     private let userDefaults = UserDefaults.standard
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private let relam = try! Realm()
     @IBOutlet var categoryList: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-       // LoadData()
+         LoadData()
     }
     
     // MARK: - Table view data source

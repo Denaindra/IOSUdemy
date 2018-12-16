@@ -8,30 +8,27 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     //outlets
     @IBOutlet weak var todoList: UITableView!
     
     //private properties
-    private var todoeyItems = [Item]()
+    private var todoeyItems:Results<Item>?
     private let userDefaults = UserDefaults.standard
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var relam = try! Realm()
     
     //public properties
     var selectedCategory : Category? {
         didSet{
-           // LoadData()
+            LoadData()
         }
     }
-
-    
-    
     //overrrde methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.todoList.register(UINib(nibName: "TodoTableViewCell", bundle: nil), forCellReuseIdentifier: "TodoTableViewCell")
-        //LoadData()
     }
     
     //outlet methosds
@@ -39,11 +36,21 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         var newItem = UITextField()
         let alert = UIAlertController(title: "Add New Item", message: " ", preferredStyle: UIAlertController.Style.alert)
         let action = UIAlertAction(title: "Add", style: .default) { (alertAction) in
-            let item = Item()
-            item.item = newItem.text!
-            item.done = false
-            self.todoeyItems.append(item)
-            self.SaveItems()
+            
+            if let selectedCategory = self.selectedCategory {
+                do {
+                    try self.relam.write {
+                        let item = Item()
+                        item.item = newItem.text!
+                    selectedCategory.items.append(item);
+                   }
+                }catch{
+                    print("erro occor \(error)")
+                }
+            }
+            self.todoList.reloadData()
+           // self.todoeyItems.append(item)
+            //self.SaveItems(Category: item)
         }
         alert.addTextField { (textField) in
             textField.placeholder = "Enter Item name"
@@ -54,13 +61,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoeyItems.count
+        return todoeyItems?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:TodoTableViewCell = todoList.dequeueReusableCell(withIdentifier: "TodoTableViewCell") as! TodoTableViewCell
-        cell.textLabel?.text = todoeyItems[indexPath.row].item
-        cell.accessoryType = todoeyItems[indexPath.row].done ? .checkmark :.none
+        
+        if let item = todoeyItems?[indexPath.row] {
+            cell.textLabel?.text = item.item
+            cell.accessoryType = item.done ? .checkmark :.none
+        }else {
+             cell.textLabel?.text = "There are no categories"
+        }
         return cell
     }
     
@@ -68,27 +80,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
 //        context.delete(todoeyItems[indexPath.row])
 //        todoeyItems.remove(at: indexPath.row)
-        todoeyItems[indexPath.row].done = !todoeyItems[indexPath.row].done
-        SaveItems()
+//        todoeyItems?[indexPath.row].done = !todoeyItems?[indexPath.row].done
+//        SaveItems()
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    func SaveItems() {
-        do {
-            try context.save();
-        }catch{
-            print("save current datamodel to \(error)")
+    func LoadData() {
+        do{
+            print(selectedCategory)
+            todoeyItems = selectedCategory?.items.sorted(byKeyPath: "item", ascending: true)
+        } catch{
+            print("fectuting error \(error)")
         }
-        self.todoList.reloadData()
     }
-    
-//    func LoadData(find request:NSFetchRequest<Items> = Items.fetchRequest()) {
-//
-//        do{
-//            todoeyItems = try context.fetch(request)
-//        } catch{
-//            print("fectuting error \(error)")
-//        }
-//    }
 }
 
 extension ViewController:UISearchBarDelegate {
