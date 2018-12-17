@@ -78,6 +78,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if let selectedRow = todoeyItems?[indexPath.row]
+        {
+            do{
+                try relam.write {
+                    selectedRow.done = !selectedRow.done
+                }
+            }catch{
+                print("Selected item error \(error) ")
+            }
+        }
+        tableView.reloadData()
 //        context.delete(todoeyItems[indexPath.row])
 //        todoeyItems.remove(at: indexPath.row)
 //        todoeyItems?[indexPath.row].done = !todoeyItems?[indexPath.row].done
@@ -86,7 +97,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     func LoadData() {
         do{
-            print(selectedCategory)
             todoeyItems = selectedCategory?.items.sorted(byKeyPath: "item", ascending: true)
         } catch{
             print("fectuting error \(error)")
