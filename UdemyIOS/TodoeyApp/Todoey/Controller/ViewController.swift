@@ -42,15 +42,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     try self.relam.write {
                         let item = Item()
                         item.item = newItem.text!
-                    selectedCategory.items.append(item);
-                   }
+                        selectedCategory.items.append(item);
+                    }
                 }catch{
                     print("erro occor \(error)")
                 }
             }
             self.todoList.reloadData()
-           // self.todoeyItems.append(item)
-            //self.SaveItems(Category: item)
         }
         alert.addTextField { (textField) in
             textField.placeholder = "Enter Item name"
@@ -59,7 +57,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         alert.addAction(action)
         present(alert,animated:true,completion:nil)
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoeyItems?.count ?? 1
     }
@@ -71,30 +69,28 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             cell.textLabel?.text = item.item
             cell.accessoryType = item.done ? .checkmark :.none
         }else {
-             cell.textLabel?.text = "There are no categories"
+            cell.textLabel?.text = "There are no categories"
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let selectedRow = todoeyItems?[indexPath.row]
+        if let selectedItem = todoeyItems?[indexPath.row]
         {
             do{
                 try relam.write {
-                    selectedRow.done = !selectedRow.done
+                    relam.delete(selectedItem)
+                   // selectedItem.done = !selectedItem.done
                 }
             }catch{
                 print("Selected item error \(error) ")
             }
         }
         tableView.reloadData()
-//        context.delete(todoeyItems[indexPath.row])
-//        todoeyItems.remove(at: indexPath.row)
-//        todoeyItems?[indexPath.row].done = !todoeyItems?[indexPath.row].done
-//        SaveItems()
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     func LoadData() {
         do{
             todoeyItems = selectedCategory?.items.sorted(byKeyPath: "item", ascending: true)
@@ -106,21 +102,21 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
 extension ViewController:UISearchBarDelegate {
     
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        let request : NSFetchRequest<Items> = Items.fetchRequest()
-//        request.predicate = NSPredicate(format: "item CONTAINS[cd] %@", searchBar.text!)
-//        request.sortDescriptors = [NSSortDescriptor(key: "item", ascending: true)]
-//        print(searchBar.text!)
-//        LoadData(find:request)
-//        self.todoList.reloadData()
-//    }
-//
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchBar.text?.count == 0 {
-//            LoadData()
-//            DispatchQueue.main.async {
-//                searchBar.resignFirstResponder()
-//            }
-//        }
-//    }
+    //    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    //        let request : NSFetchRequest<Items> = Items.fetchRequest()
+    //        request.predicate = NSPredicate(format: "item CONTAINS[cd] %@", searchBar.text!)
+    //        request.sortDescriptors = [NSSortDescriptor(key: "item", ascending: true)]
+    //        print(searchBar.text!)
+    //        LoadData(find:request)
+    //        self.todoList.reloadData()
+    //    }
+    //
+    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    //        if searchBar.text?.count == 0 {
+    //            LoadData()
+    //            DispatchQueue.main.async {
+    //                searchBar.resignFirstResponder()
+    //            }
+    //        }
+    //    }
 }
