@@ -97,7 +97,7 @@ extension CategoryViewController:SwipeTableViewCellDelegate{
                 do{
                     try self.relam.write {
                         self.relam.delete(category)
-                        tableView.reloadData()
+                   //     tableView.reloadData()
                     }
                 }
                 catch{
