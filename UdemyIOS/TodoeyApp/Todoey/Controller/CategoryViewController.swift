@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import RealmSwift
+import SwipeCellKit
+
 
 class CategoryViewController: UITableViewController {
     
@@ -19,28 +21,39 @@ class CategoryViewController: UITableViewController {
     @IBOutlet var categoryList: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-         LoadData()
+        LoadData()
+        
     }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryItems?.count ?? 1
     }
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = categoryList.dequeueReusableCell(withIdentifier: "goceryTableCell") as! UITableViewCell
+        let cell = categoryList.dequeueReusableCell(withIdentifier: "goceryTableCell") as! SwipeTableViewCell
+        
         cell.textLabel?.text = categoryItems?[indexPath.row].name ?? "there are no goceries"
+        cell.delegate = self
         return cell;
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "GoToTodoeyPage", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! ViewController
         if let indexPath = tableView.indexPathForSelectedRow{
             destinationVC.selectedCategory = categoryItems?[indexPath.row]
         }
     }
+    
     @IBAction func AddButton(_ sender: Any) {
         var newItem = UITextField()
         let alert = UIAlertController(title: "Add New Item", message: " ", preferredStyle: UIAlertController.Style.alert)
@@ -58,8 +71,9 @@ class CategoryViewController: UITableViewController {
     }
     
     func LoadData() {
-      categoryItems = relam.objects(Category.self)
+        categoryItems = relam.objects(Category.self)
     }
+    
     func SaveItems(catergory:Category) {
         do {
             try relam.write {
@@ -71,4 +85,32 @@ class CategoryViewController: UITableViewController {
         self.categoryList.reloadData()
         
     }
+}
+
+extension CategoryViewController:SwipeTableViewCellDelegate{
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        guard orientation == .right else {return nil}
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            
+            if let category = self.categoryItems?[indexPath.row] {
+                do{
+                    try self.relam.write {
+                        self.relam.delete(category)
+                        tableView.reloadData()
+                    }
+                }
+                catch{
+                    print("remove data from relam \(error)")
+                }
+            }
+            
+        }
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "rubbish-bin")
+        
+        return [deleteAction]
+    }
+    
+  
 }
