@@ -1,18 +1,10 @@
-//
-//  CategoryViewController.swift
-//  Todoey
-//
-//  Created by gayan perera on 12/14/18.
-//  Copyright © 2018 gayan perera. All rights reserved.
-//
+
 
 import UIKit
 import CoreData
 import RealmSwift
-import SwipeCellKit
 
-
-class CategoryViewController: UITableViewController {
+class CategoryViewController: SwapTableViewController {
     
     // peivate varibales
     private var categoryItems:Results<Category>?
@@ -30,15 +22,12 @@ class CategoryViewController: UITableViewController {
         return categoryItems?.count ?? 1
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = categoryList.dequeueReusableCell(withIdentifier: "goceryTableCell") as! SwipeTableViewCell
-        
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel?.text = categoryItems?[indexPath.row].name ?? "there are no goceries"
-        cell.delegate = self
         return cell;
     }
-    
+   
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
@@ -51,6 +40,20 @@ class CategoryViewController: UITableViewController {
         let destinationVC = segue.destination as! ViewController
         if let indexPath = tableView.indexPathForSelectedRow{
             destinationVC.selectedCategory = categoryItems?[indexPath.row]
+        }
+    }
+    
+    override func UpdateModel(Indexpath: IndexPath) {
+        if let category = self.categoryItems?[Indexpath.row] {
+            do{
+                try self.relam.write {
+                    self.relam.delete(category)
+                    //     tableView.reloadData()
+                }
+            }
+            catch{
+                print("remove data from relam \(error)")
+            }
         }
     }
     
@@ -84,38 +87,5 @@ class CategoryViewController: UITableViewController {
         }
         self.categoryList.reloadData()
         
-    }
-}
-
-extension CategoryViewController:SwipeTableViewCellDelegate{
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        
-        guard orientation == .right else {return nil}
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            
-            if let category = self.categoryItems?[indexPath.row] {
-                do{
-                    try self.relam.write {
-                        self.relam.delete(category)
-                   //     tableView.reloadData()
-                    }
-                }
-                catch{
-                    print("remove data from relam \(error)")
-                }
-            }
-            
-        }
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "rubbish-bin")
-        
-        return [deleteAction]
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-        var options = SwipeOptions()
-        options.expansionStyle = .destructive
-        options.transitionStyle = .border
-        return options
     }
 }

@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  Todoey
-//
-//  Created by gayan perera on 12/9/18.
-//  Copyright © 2018 gayan perera. All rights reserved.
-//
+
 
 import UIKit
 import CoreData
