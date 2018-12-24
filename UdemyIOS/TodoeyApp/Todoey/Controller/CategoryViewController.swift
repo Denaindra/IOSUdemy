@@ -1,7 +1,6 @@
 
 
 import UIKit
-import CoreData
 import RealmSwift
 
 class CategoryViewController: SwapTableViewController {

@@ -1,7 +1,7 @@
 
 
 import UIKit
-import CoreData
+
 import RealmSwift
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
